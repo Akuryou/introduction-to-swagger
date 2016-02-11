@@ -11,7 +11,9 @@
   require('plugins/tagcloud');
 
   setTimeout(function() {
-    window.Reveal.initialize({});
+    window.Reveal.initialize({
+      transition: 'convex',
+    });
     hljs.initHighlighting();
   }, 1000);
 
