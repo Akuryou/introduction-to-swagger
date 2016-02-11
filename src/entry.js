@@ -5,7 +5,10 @@
   require('node_modules/reveal.js/css/theme/blood.css');
   require('node_modules/font-awesome/css/font-awesome.css');
 
-  var Reveal = require('reveal.js');
-  Reveal.initialize();
+  window.Reveal = require('reveal.js');
+
+  setTimeout(function() {
+    window.Reveal.initialize({});
+  }, 1000);
 
 })();
