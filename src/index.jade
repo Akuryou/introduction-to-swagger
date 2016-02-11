@@ -1,12 +1,77 @@
 doctype html
 html(lang="en")
   head
-    title reveal.js boiler plate
+    title An introduction to swagger
   body
     .reveal
       .slides
         section
-          h1 Slide 1
+          h2 An introduction to
+          h1 swagger
+          img(src=require("./assets/swagger_logo.png") style="background: none; border: none;")
+          p
+            i by Fabian Ihl
         section
-          h1 Slide 2
+          h2 Motivation
+          figure.fragment.fade-in
+            img(src=require("./assets/motivation.jpg") style="height: 500px;")
+            figcaption (by geek-and-poke.com)
+        section
+          h2 What is swagger?
+          p.fragment
+            | Swagger is a formal
+            a(href="http://swagger.io/specification/")  specification
+            |  surrounded by a large ecosystem of
+            a(href="http://swagger.io/tools/")  tools
+            |  for REST APIs.
+        section
+          h2 License
+          p.fragment Apache 2.0
+        section
+          h2 When to integrate?
+          p.fragment(data-fragment-index="0")
+            | Top down
+            br
+            i.fa.fa-arrow-down.fa-3x
+          img(src=require("./assets/swagger_logo.png") style="background: none; border: none;")
+          p.fragment(data-fragment-index="1")
+            i.fa.fa-arrow-up.fa-3x
+            br
+            | Bottom up
+        section
+          h2 Features
+          p.fragment Specification
+          p.fragment
+            i.fa.fa-arrow-down
+          ul
+            li.fragment Documentation
+            li.fragment Sandboxes
+            li.fragment Client code generation
+            li.fragment Server code generation
+            li.fragment Design-First Approach
+        section
+          h2 Specification
+          h3 Format
+          p.fragment JSON, YAML
+          p.fragment data types: JSON Schema Draft 4
+        section
+          h2 Info
+          pre
+            code.json.
+              {
+                "swagger": "2.0",
+                "title": "Swagger Sample App",
+                "description": "This is a sample server Petstore server.",
+                "termsOfService": "http://swagger.io/terms/",
+                "contact": {
+                  "name": "API Support",
+                  "url": "http://www.swagger.io/support",
+                  "email": "support@swagger.io"
+                },
+                "license": {
+                  "name": "Apache 2.0",
+                  "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+                },
+                "version": "1.0.1"
+              }
   script(type='text/javascript' src="bundle.js")
