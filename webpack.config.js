@@ -1,5 +1,7 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
-  entry: ['./src/entry.js', 'file?name=index.html!jade-html!./src/index.jade'],
+  entry: ['./src/entry.js'],
   resolve: {
     root: __dirname,
   },
@@ -14,5 +16,12 @@ module.exports = {
       {test: /\.ttf$/, loader: "file"},
       {test: /\.woff$/, loader: "file"}
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      inject: true,
+      template: 'src/index.jade',
+    }),
+  ]
 };
