@@ -11,6 +11,7 @@ module.exports = {
   },
   module: {
     loaders: [
+      {test: /\.jade$/, loader: 'apply-loader!jade-loader'},
       {test: /\.css$/, loader: 'style!css'},
       {test: /\.(jpe?g|png|gif|svg)$/i, loader:'file'},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
