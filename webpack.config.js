@@ -11,10 +11,11 @@ module.exports = {
   },
   module: {
     loaders: [
-      {test: /\.css$/, loader: "style!css"},
-      {test: /\.eot$/, loader: "file"},
-      {test: /\.ttf$/, loader: "file"},
-      {test: /\.woff$/, loader: "file"}
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+      {test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
+      {test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'file'},
     ]
   },
   plugins: [
