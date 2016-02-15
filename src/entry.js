@@ -13,6 +13,7 @@
   setTimeout(function() {
     window.Reveal.initialize({
       transition: 'convex',
+      history: true,
     });
     hljs.initHighlighting();
   }, 1000);
