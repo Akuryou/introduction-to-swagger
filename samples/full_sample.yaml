@@ -10,7 +10,7 @@ produces:
 paths:
   /users/:
     get:
-      description: Returns a list of users
+      summary: Returns a list of users
       responses:
         200:
           description: Success
@@ -19,7 +19,7 @@ paths:
             items:
               $ref: '#/definitions/User'
     post:
-      description: Create a new user
+      summary: Create a new user
       parameters:
         - name: body
           in: body
@@ -35,7 +35,7 @@ paths:
           description: Input error
   /users/{id}:
     get:
-      description: Returns a specific user
+      summary: Returns a specific user
       parameters:
         - name: id
           in: path
@@ -49,7 +49,7 @@ paths:
         404:
           description: User not found
     put:
-      description: Update an user
+      summary: Update an user
       parameters:
         - name: id
           in: path
@@ -70,7 +70,7 @@ paths:
         404:
           description: User not found
     delete:
-      description: Delete an user
+      summary: Delete an user
       parameters:
         - name: id
           in: path
