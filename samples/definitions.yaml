@@ -1,0 +1,30 @@
+definitions:
+  User:
+    type: object
+    required:
+      - name
+      - email
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        description: Must be unique
+      email:
+        type: string
+        format: email
+        example: me@example.com
+      dateJoined:
+        type: string
+        format: date
+      permissions:
+        type: array
+        items:
+          type: string
+          enum:
+            - READ
+            - WRITE
+            - CREATE
+            - DELETE
+        example: ['READ', 'CREATE']
