@@ -1,0 +1,12 @@
+{
+  "name": "bootprint-sample",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "html": "node node_modules/bootprint/bin/bootprint.js swagger ../samples/full_sample.yaml html"
+  },
+  "devDependencies": {
+    "bootprint": "*",
+    "bootprint-swagger": "*"
+  }
+}
