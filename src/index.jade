@@ -175,4 +175,59 @@ html(lang="en")
           pre
             code.yaml
               include ../samples/full_sample.yaml
+        section
+          h1 Tools
+          h2 Editors
+        section
+          section
+            h2 Swagger Editor
+            p
+              a(href="http://editor.swagger.io/") editor.swagger.io
+            p.fragment
+              i.fa.fa-arrow-down.fa-3x
+          section
+            img(src=require("./assets/swagger_editor.png"))
+          section
+            h3.fragment.highlight-green Pros
+            ul
+              li.fragment Web based (Localstorage)
+              li.fragment json/yaml import/export
+              li.fragment Live preview
+              li.fragment Validation + Error detection
+              li.fragment Vast options for client/server generation
+              li.fragment Can send test requests to API implementation
+              li.fragment Open source
+              li.fragment May be installed locally
+          section
+            h3.fragment.highlight-red Cons
+            ul
+              li.fragment Recalculation of live preview can start to lag for large files
+          section
+            p
+              i.fa.fa-arrow-right.fa-3x
+        section
+          section
+            h2 Restlet Studio
+            p
+              a(href="https://studio.restlet.com") studio.restlet.com
+            p.fragment
+              i.fa.fa-arrow-down.fa-3x
+          section
+            img(src=require("./assets/restlet_studio.png"))
+          section
+            h3.fragment.highlight-green Pros
+            ul
+              li.fragment Web based (Localstorage or subscription)
+              li.fragment GUI based!
+              li.fragment swagger json/raml import/export
+              li.fragment Some options for client/server generation
+          section
+            h3.fragment.highlight-red Cons
+            ul
+              li.fragment Limited validation and error detection
+              li.fragment Does not support full swagger specification
+              li.fragment Proprietary
+          section
+            p
+              i.fa.fa-arrow-right.fa-3x
   script(type='text/javascript' src="bundle.js")
