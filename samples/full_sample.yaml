@@ -3,7 +3,7 @@ info:
   title: Sample API
   description: Sample api representing an user resource
   version: "1.0.0"
-host: api.example.com
+host: localhost:8000
 basePath: /v1
 produces:
   - application/json
