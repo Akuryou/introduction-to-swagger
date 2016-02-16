@@ -1,11 +1,7 @@
 {
-  "version": "0.0.0",
+  "version": "1.0.0",
   "name": "introduction-to-swagger",
-  "private": true,
   "description": "A presentation about swagger.",
-  "dependencies": {
-    "reveal.js": "^3.2.0"
-  },
   "devDependencies": {
     "apply-loader": "^0.1.0",
     "css-loader": "^0.23.1",
@@ -15,6 +11,7 @@
     "html-webpack-plugin": "^2.8.1",
     "jade": "^1.11.0",
     "jade-loader": "^0.8.0",
+    "reveal.js": "^3.2.0"
     "style-loader": "^0.13.0",
     "webpack": "^1.12.13",
     "webpack-dev-server": "^1.14.1"
@@ -24,8 +21,8 @@
     "server": "node node_modules/webpack-dev-server/bin/webpack-dev-server.js --progress --colors --inline --hot"
   },
   "keywords": [
-    "swagger"
+    "swagger",
+    "presentation"
   ],
   "author": "Fabian Ihl",
-  "license": "MIT"
 }
