@@ -18,6 +18,8 @@ Presentation and samples
 
     npm run build
 
+(Build the bootprint sample first)
+
 ## Samples
 
 ### Swagger specifications
