@@ -1,7 +1,11 @@
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/entry.js'],
+  entry: [
+    './src/entry.js',
+    'file?name=bootprint.html!./bootprint-sample/html/index.html',
+    '!file?name=main.css!./bootprint-sample/html/main.css'
+  ],
   resolve: {
     root: __dirname,
   },
