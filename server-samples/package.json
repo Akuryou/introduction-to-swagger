@@ -1,0 +1,8 @@
+{
+  "name": "server-sample",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "swagger-server": "^1.0.0-alpha.18"
+  }
+}

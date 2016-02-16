@@ -287,4 +287,64 @@ html(lang="en")
                 p npm run html
           section
             p: i.fa.fa-arrow-right.fa-3x
-  script(type='text/javascript' src="bundle.js")
+        section
+          h1 Tools
+          h2 Dev server
+        section
+          section
+            h2 Swagger-server
+            p: a(href="https://github.com/BigstickCarpet/swagger-server") github.com/BigstickCarpet/swagger-server
+            p (Node.js)
+            p.fragment: i.fa.fa-arrow-down.fa-3x
+          section
+            h2 Features
+            ul
+              li.fragment Supports JSON and YAML
+              li.fragment Easy to set up
+              li.fragment Auto reload
+              li.fragment Mocks all CRUD operations
+              li.fragment Validates requests
+              li.fragment Temporary storage
+              li.fragment Can load sample data
+              li.fragment Easy to extend with custom logic
+          section
+            h2 Requirements
+            pre
+              code.json
+                include ../server-samples/package.json
+            p: i (See package.json in server samples)
+          section
+            h2 Server code
+            .fragment
+              pre
+                code.js
+                  include ../server-samples/simple.js
+              p: i (See simple.js in server samples)
+            h3.fragment Or even less...
+            pre.fragment
+              code.js
+                include ../server-samples/oneliner.js
+          section
+            h2 Try the sample
+          section
+            h2 Loading sample data
+            .fragment
+              pre
+                code.js
+                  include ../server-samples/sample_data.js
+              p: i (See sample_data.js in server samples)
+          section
+            h2 Try the sample
+          section
+            h2 Custom logic
+            p.fragment Test if email contains '@'
+            .fragment
+              pre
+                code.js
+                  include ../server-samples/custom_logic.js
+              p: i (See custom_logic.js in server samples)
+          section
+            h2 Try the sample
+          section
+            p: i.fa.fa-arrow-right.fa-3x
+script(type='text/javascript' src="bundle.js")
