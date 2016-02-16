@@ -8,7 +8,7 @@
 
   window.hljs = require('highlight.js');
   window.Reveal = require('reveal.js');
-  require('plugins/tagcloud');
+  require('./tagcloud');
 
   setTimeout(function() {
     window.Reveal.initialize({
