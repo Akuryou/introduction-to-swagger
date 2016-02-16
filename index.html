@@ -1,1 +1,273 @@
-<h1>test</h1>
+<!DOCTYPE html><html lang="en"><head><title>An introduction to swagger</title><style>iframe {
+  height: 600px;
+  width: 95%;
+}
+pre {
+  width: 95% !important;
+}
+img {
+  background: none !important;
+  border: none !important;
+}
+p.horizontal-flex {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+p.logos img {
+  background: #FFF !important;
+}</style></head><body><div class="reveal"><div class="slides"><section><h2>An introduction to</h2><h1>swagger</h1><img src="dd82caf4ed3896214aa536921491e7b7.png"><p><i>by Fabian Ihl</i></p></section><section><h2>Motivation</h2><figure class="fragment fade-in"><img src="64b9044f89f787d33c64ce39fd1e0b82.jpg" style="height: 500px;"><figcaption>(by geek-and-poke.com)</figcaption></figure></section><section><h2>What is swagger?</h2><p class="fragment">Swagger is a formal<a href="http://swagger.io/specification/"> specification</a> surrounded by a large ecosystem of<a href="http://swagger.io/tools/"> tools</a> for REST APIs.</p></section><section><section><h1>Why swagger?</h1><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><h2>Alternatives</h2><ul><li class="fragment">RAML</li><li class="fragment">API Blueprint</li></ul></section><section><h2>Common goals</h2><ul><li class="fragment">Easy to write</li><li class="fragment">Comfortable to read</li><li class="fragment">Documentation / Client / Server generation</li><li class="fragment">Language agnostic</li><li class="fragment">Open source</li></ul></section><section><h2>What about WSDL 2.0?</h2><ul><li class="fragment">Core concept SOAP not REST oriented</li><li class="fragment">Sparse documentation</li><li class="fragment">Limited community</li><li class="fragment">Hard to read</li><li class="fragment">Tedious to write</li><li class="fragment">Limited REST specific tool chain</li></ul></section><section><h2>Comparison</h2><table><thead><tr><th></th><th>RAML</th><th>API Blueprint</th><th>Swagger</th></tr></thead><tbody><tr class="fragment highlight-current-blue"><th>Format</th><td>yaml</td><td>markdown</td><td>json/yaml</td></tr><tr class="fragment highlight-current-blue"><th>Github (repos)</th><td>587</td><td>293</td><td>2209</td></tr><tr class="fragment highlight-current-blue"><td><b>Stackoverflow</b></td><td>330</td><td>770</td><td>3802</td></tr></tbody></table></section><section><h3>Back to swagger</h3><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><h2>License</h2><p class="fragment">Apache 2.0</p></section><section tagcloud large><h2>Support for</h2><p class="fragment">CLOJURE
+D
+Erlang
+GO
+HASKELL
+JAVA
+JAVASCRIPT
+TYPESCRIPT
+.NET
+NODE.JS
+PERL
+PHP
+PYTHON
+RUBY
+SCALA</p></section><section><h2>Features</h2><p class="fragment">Specification</p><p class="fragment"><i class="fa fa-arrow-down"></i></p><ul><li class="fragment">Documentation</li><li class="fragment">Sandboxes</li><li class="fragment">Client code generation</li><li class="fragment">Server code generation</li><li class="fragment">Design-First Approach</li></ul></section><section><h2>When to integrate?</h2><p data-fragment-index="0" class="fragment">Top down<br><i class="fa fa-arrow-down fa-3x"></i></p><img src="dd82caf4ed3896214aa536921491e7b7.png" style="background: none; border: none;"><p data-fragment-index="1" class="fragment"><i class="fa fa-arrow-up fa-3x"></i><br>Bottom up</p></section><section><h2>Specification</h2><h3>Format</h3><p class="fragment">JSON, YAML</p><p class="fragment">data types:<a href="http://json-schema.org/"> JSON Schema Draft 4</a></p></section><section><h2>Specification</h2><h3>Structure</h3><ol><li><p><b class="fragment">Info</b><br><q class="fragment">The object provides metadata about the API.</q></p></li><li><p><b class="fragment">Paths</b><br><q class="fragment">Holds the relative paths to the individual endpoints. Describes the operations available.</q></p></li><li><p><b class="fragment">Definitions</b><br><q class="fragment">An object to hold data types that can be consumed and produced by operations.</q></p></li></ol></section><section><h2>Info</h2><pre><code class="yaml">swagger: 2.0
+title: Swagger Sample App
+description: This is a sample server Petstore server.
+termsOfService: http://swagger.io/terms/
+contact:
+  name: API Support
+  url: http://www.swagger.io/support
+  email: support@swagger.io
+license:
+  name: Apache 2.0
+  url: http://www.apache.org/licenses/LICENSE-2.0.html
+version: 1.0.1
+</code></pre><p><i>(See info.yaml in samples)</i></p></section><section><h2>Paths</h2><pre><code class="yaml">paths:
+  /hello/{user}:
+    get:
+      description: Returns a greeting to the user!
+      parameters:
+        - name: user
+          in: path
+          type: string
+          required: true
+          description: The name of the user to greet.
+      responses:
+        200:
+          description: Returns the greeting.
+          schema:
+            type: string
+        400:
+          description: Invalid characters in "user" were provided.
+</code></pre><p><i>(See paths.yaml in samples)</i></p></section><section><h2>Definitions</h2><pre><code class="yaml">definitions:
+  User:
+    type: object
+    required:
+      - name
+      - email
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        description: Must be unique
+      email:
+        type: string
+        format: email
+        example: me@example.com
+      dateJoined:
+        type: string
+        format: date
+      permissions:
+        type: array
+        items:
+          type: string
+          enum:
+            - READ
+            - WRITE
+            - CREATE
+            - DELETE
+        example: ['READ', 'CREATE']
+</code></pre><p><i>(See definitions.yaml in samples)</i></p></section><section><h2>Definitions in Paths</h2><pre><code class="yaml">paths:
+  /users/:
+    get:
+      description: Returns a list of users
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+</code></pre><p><i>(See definitions_paths.yaml in samples)</i></p></section><section><h2>Full example</h2><pre><code class="yaml">swagger: '2.0'
+info:
+  title: Sample API
+  description: Sample api representing an user resource
+  version: "1.0.0"
+host: localhost:8000
+basePath: /v1
+produces:
+  - application/json
+consumes:
+  - application/json
+paths:
+  /users/:
+    get:
+      summary: Returns a list of users
+      responses:
+        200:
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+    post:
+      summary: Create a new user
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: Input error
+  /users/{id}:
+    get:
+      summary: Returns a specific user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+        404:
+          description: User not found
+    put:
+      summary: Update an user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      responses:
+        200:
+          description: Success
+          schema:
+            $ref: '#/definitions/User'
+        400:
+          description: Input error
+        404:
+          description: User not found
+    delete:
+      summary: Delete an user
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: integer
+      responses:
+        204:
+          description: Success
+        404:
+          description: User not found
+definitions:
+  User:
+    type: object
+    required:
+      - name
+      - email
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+        description: Must be unique
+      email:
+        type: string
+        format: email
+        example: me@example.com
+      dateJoined:
+        type: string
+        format: date
+      permissions:
+        type: array
+        items:
+          type: string
+          enum:
+            - READ
+            - WRITE
+            - CREATE
+            - DELETE
+        example: ['READ', 'CREATE']
+</code></pre><p><i>(See full_sample.yaml in samples)</i></p></section><section><h1>Tools</h1><h2>Editors</h2></section><section><section><h2>Swagger Editor</h2><p><a href="http://editor.swagger.io/">editor.swagger.io</a></p><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><img src="be167b7d6bb607141c2841fcbea715dd.png"></section><section><h3 class="fragment highlight-green">Pros</h3><ul><li class="fragment">Web based (Localstorage)</li><li class="fragment">json/yaml import/export</li><li class="fragment">Live preview</li><li class="fragment">Validation + Error detection</li><li class="fragment">Vast options for client/server generation</li><li class="fragment">Can send test requests to API implementation</li><li class="fragment">Open source</li><li class="fragment">May be installed locally</li></ul></section><section><h3 class="fragment highlight-red">Cons</h3><ul><li class="fragment">Recalculation of live preview can start to lag for large files</li></ul></section><section><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><section><h2>Restlet Studio</h2><p><a href="https://studio.restlet.com">studio.restlet.com</a></p><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><img src="3d997cbf8c99df5e427cd2f0d5cc71ca.png"></section><section><h3 class="fragment highlight-green">Pros</h3><ul><li class="fragment">Web based (Localstorage or subscription)</li><li class="fragment">GUI based!</li><li class="fragment">swagger json/raml import/export</li><li class="fragment">Some options for client/server generation</li></ul></section><section><h3 class="fragment highlight-red">Cons</h3><ul><li class="fragment">Limited validation and error detection</li><li class="fragment">Does not support full swagger specification</li><li class="fragment">Proprietary</li></ul></section><section><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><h1>Tools</h1><h2>Documentation</h2></section><section><section><h2>Swagger UI</h2><p><a href="http://swagger.io/swagger-ui/">swagger.io/swagger-ui</a></p><p>(Node.js)</p><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><img src="675f22d66dd66dcc673fd2d64e3031b7.png"></section><section><h2>Swagger UI</h2><ul><li class="fragment">Elaborate layout</li><li class="fragment">Integrated ui to send test calls</li><li class="fragment">Sligtly complex to get started</li></ul></section><section><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><section><h2>bootprint-openapi</h2><p><a href="https://github.com/nknapp/bootprint-openapi">github.com/nknapp/bootprint-openapi</a></p><p>(fka. bootprint-swagger)</p><p>(Node.js)</p><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><iframe src="bootprint.html"></iframe></section><section><h2>Features</h2><ul><li class="fragment">Clear layout</li><li class="fragment">Static html file</li><li class="fragment">Can be converted to pdf</li><li class="fragment">Supports custom templates and styling</li><li class="fragment">Easy setup and generation</li></ul></section><section><h2>Requirements</h2><pre><code class="json">{
+  "name": "bootprint-sample",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "html": "node node_modules/bootprint/bin/bootprint.js swagger ../samples/full_sample.yaml html"
+  },
+  "devDependencies": {
+    "bootprint": "*",
+    "bootprint-swagger": "*"
+  }
+}
+</code></pre><p><i>(See package.json in bootprint sample)</i></p></section><section><h2>Usage</h2><ol><li class="fragment"><b>Install</b><p>npm install</p></li><li class="fragment"><b>Compile HTML</b><p>npm run html</p></li></ol></section><section><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><h1>Tools</h1><h2>Dev server</h2></section><section><section><h2>Swagger-server</h2><p><a href="https://github.com/BigstickCarpet/swagger-server">github.com/BigstickCarpet/swagger-server</a></p><p>(Node.js)</p><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><h2>Features</h2><ul><li class="fragment">Supports JSON and YAML</li><li class="fragment">Easy to set up</li><li class="fragment">Auto reload</li><li class="fragment">Mocks all CRUD operations</li><li class="fragment">Validates requests</li><li class="fragment">Temporary storage</li><li class="fragment">Can load sample data</li><li class="fragment">Easy to extend with custom logic</li></ul></section><section><h2>Requirements</h2><pre><code class="json">{
+  "name": "server-sample",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "swagger-server": "^1.0.0-alpha.18"
+  }
+}
+</code></pre><p><i>(See package.json in server samples)</i></p></section><section><h2>Server code</h2><div class="fragment"><pre><code class="js">var swagger = require('swagger-server');
+var server = swagger('../samples/full_sample.yaml');
+
+server.listen(8000, function() {
+  console.log('Your REST API is now running at http://localhost:8000');
+});
+</code></pre><p><i>(See simple.js in server samples)</i></p></div><h3 class="fragment">Or even less...</h3><pre class="fragment"><code class="js">require('swagger-server')('../samples/full_sample.yaml').listen(8000);
+</code></pre></section><section><h2>Try the sample</h2></section><section><h2>Loading sample data</h2><div class="fragment"><pre><code class="js">var swagger = require('swagger-server');
+var Resource = swagger.Resource;
+var server = swagger('../samples/full_sample.yaml');
+
+server.dataStore.save(
+  new Resource('/v1/users/1', {name: 'Bob', email: 'bob@example.com', dateJoined: '2016-01-01'}),
+  new Resource('/v1/users/2', {name: 'Joe', email: 'joe@example.com', dateJoined: '2016-01-02'})
+);
+
+server.listen(8000, function() {
+  console.log('Your REST API is now running at http://localhost:8000');
+});
+</code></pre><p><i>(See sample_data.js in server samples)</i></p></div></section><section><h2>Try the sample</h2></section><section><h2>Custom logic</h2><p class="fragment">Test if email contains '@'</p><div class="fragment"><pre><code class="js">var swagger = require('swagger-server');
+var Resource = swagger.Resource;
+var server = swagger('../samples/full_sample.yaml');
+
+server.post('/v1/users/', function(req, res, next) {
+  if(req.body.email.indexOf('@') === -1) {
+    res.status(400).send('Invalid email');
+  } else {
+    next();
+  }
+});
+
+server.listen(8000, function() {
+  console.log('Your REST API is now running at http://localhost:8000');
+});
+</code></pre><p><i>(See custom_logic.js in server samples)</i></p></div></section><section><h2>Try the sample</h2></section><section><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><h1>Future</h1></section><section><h2 data-fragment-index="2" class="fragment">Open API Initiative</h2><p class="horizontal-flex"><img src="dd82caf4ed3896214aa536921491e7b7.png" data-fragment-index="0" class="fragment"><i data-fragment-index="1" class="fragment fa fa-arrow-right fa-3x"></i><img src="7317fce28ef41fa0e4682789dc027d1c.png" data-fragment-index="2" class="fragment"></p><p data-fragment-index="3" class="fragment">A Linux Foundation Collaborative Project</p></section><section><h2>Open API Initiative</h2><p><a href="https://openapis.org/">openapis.org</a></p><blockquote class="fragment">SmartBear Software is donating the Swagger Specification directly to the OAI as the basis of this Open Specification.</blockquote></section><section><h2>Goal</h2><blockquote class="fragment">The OAI is focused on creating, evolving and promoting a vendor neutral API Description Format based on the Swagger Specification.</blockquote></section><section><h2>Members</h2><p class="horizontal-flex logos fragment"><img src="1056e2ebbe0a5b548825fc0e79755ae8.png"><img src="23beb67ab307a738fe338a62c8791bb1.png"><img src="c3939f5f9f842ec6b8ea5ed2dbe5387b.png"><img src="827b815189926b9ef7d6c0c75606596a.png"><img src="9d585605bd1c19675c227f51e4582354.png"><img src="721cdcce403f8acaaa2aa7d8c33332ea.png"><img src="6ad9510c24d02ee4589c2f588abe6af4.png"><img src="3b3e4b425dd044f386f29f2008e54d98.png"><img src="c1e846c9dd43ff1765bb94a82f4e3427.png"><img src="5e124d17d85552e05a0cf97a12a1afdb.png"><img src="1ec245b27b70cce2ce397e08786131cf.png"><img src="80d1afac49c920d5733a1890426edfdc.png"></p></section><section><h1 class="fragment">Thank you</h1></section><section><h1>Questions ?</h1><hr><p>View this presentation at:</p><p><a href="http://akuryou.github.io/introduction-to-swagger">akuryou.github.io/introduction-to-swagger</a></p><p>Clone it, fork it, try the samples at:</p><p><a href="https://github.com/akuryou/introduction-to-swagger">github.com/akuryou/introduction-to-swagger</a></p></section></div></div><script src="bundle.js"></script></body><script type="text/javascript" src="bundle.js"></script></html>
