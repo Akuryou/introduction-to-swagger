@@ -23,6 +23,21 @@ html(lang="en")
       p.logos img {
         background: #FFF !important;
       }
+
+      .line {
+        display: block;
+      }
+      .line.focus {
+        background: #555;
+      }
+      .reveal .slides section .fragment.current-only {
+        opacity: 1;
+        visibility: visible;
+        display: none;
+      }
+      .reveal .slides section .fragment.current-only.current-fragment {
+        display: block;
+      }
   body
     .reveal
       .slides
@@ -176,25 +191,41 @@ html(lang="en")
           pre
             code.yaml
               include ../samples/info.yaml
-          p: i (See info.yaml in samples)
+          p.fragment.current-only(data-code-focus="2-3") Description
+          p.fragment.current-only(data-code-focus="5-8") Contact information
+          p.fragment.current-only(data-code-focus="9-11") License
+          p.fragment.current-only(data-code-focus="12") API version
+          p.fragment: i (See info.yaml in samples)
         section
           h2 Paths
           pre
             code.yaml
               include ../samples/paths.yaml
-          p: i (See paths.yaml in samples)
+          p.fragment.current-only(data-code-focus="2") Path
+          p.fragment.current-only(data-code-focus="3") Method
+          p.fragment.current-only(data-code-focus="5-10") Parameters
+          p.fragment.current-only(data-code-focus="11-17") Responses
+          p.fragment: i (See paths.yaml in samples)
         section
           h2 Definitions
           pre
             code.yaml
               include ../samples/definitions.yaml
-          p: i (See definitions.yaml in samples)
+          p.fragment.current-only(data-code-focus="2") Name
+          p.fragment.current-only(data-code-focus="4-6") Required properties
+          p.fragment.current-only(data-code-focus="7-30") Properties ...
+          p.fragment.current-only(data-code-focus="8-10") Integers
+          p.fragment.current-only(data-code-focus="11-17") Strings
+          p.fragment.current-only(data-code-focus="18-20") Dates
+          p.fragment.current-only(data-code-focus="21-30") Complex structures
+          p.fragment: i (See definitions.yaml in samples)
         section
           h2 Definitions in Paths
           pre
             code.yaml
               include ../samples/definitions_paths.yaml
-          p: i (See definitions_paths.yaml in samples)
+          p.fragment.current-only(data-code-focus="8-11") Array of users
+          p.fragment: i (See definitions_paths.yaml in samples)
         section
           h2 Full example
           pre

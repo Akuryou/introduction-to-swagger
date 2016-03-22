@@ -16,6 +16,8 @@
       history: true,
     });
     hljs.initHighlighting();
+    require('script!reveal-code-focus');
+    RevealCodeFocus();
   }, 1000);
 
 })();
