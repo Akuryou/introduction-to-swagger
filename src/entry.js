@@ -9,7 +9,6 @@
   window.hljs = require('highlight.js');
   window.Reveal = require('reveal.js');
   require('./tagcloud');
-  require('reveal-code-focus');
 
   setTimeout(function() {
     window.Reveal.initialize({
@@ -17,6 +16,7 @@
       history: true,
     });
     hljs.initHighlighting();
+    require('script!reveal-code-focus');
     RevealCodeFocus();
   }, 1000);
 
