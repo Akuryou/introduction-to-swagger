@@ -17,6 +17,21 @@ p.horizontal-flex {
 }
 p.logos img {
   background: #FFF !important;
+}
+
+.line {
+  display: block;
+}
+.line.focus {
+  background: #555;
+}
+.reveal .slides section .fragment.current-only {
+  opacity: 1;
+  visibility: visible;
+  display: none;
+}
+.reveal .slides section .fragment.current-only.current-fragment {
+  display: block;
 }</style></head><body><div class="reveal"><div class="slides"><section><h2>An introduction to</h2><h1>swagger</h1><img src="dd82caf4ed3896214aa536921491e7b7.png"><p><i>by Fabian Ihl</i></p></section><section><h2>Motivation</h2><figure class="fragment fade-in"><img src="64b9044f89f787d33c64ce39fd1e0b82.jpg" style="height: 500px;"><figcaption>(by geek-and-poke.com)</figcaption></figure></section><section><h2>What is swagger?</h2><p class="fragment">Swagger is a formal<a href="http://swagger.io/specification/"> specification</a> surrounded by a large ecosystem of<a href="http://swagger.io/tools/"> tools</a> for REST APIs.</p></section><section><section><h1>Why swagger?</h1><p class="fragment"><i class="fa fa-arrow-down fa-3x"></i></p></section><section><h2>Alternatives</h2><ul><li class="fragment">RAML</li><li class="fragment">API Blueprint</li></ul></section><section><h2>Common goals</h2><ul><li class="fragment">Easy to write</li><li class="fragment">Comfortable to read</li><li class="fragment">Documentation / Client / Server generation</li><li class="fragment">Language agnostic</li><li class="fragment">Open source</li></ul></section><section><h2>What about WSDL 2.0?</h2><ul><li class="fragment">Core concept SOAP not REST oriented</li><li class="fragment">Sparse documentation</li><li class="fragment">Limited community</li><li class="fragment">Hard to read</li><li class="fragment">Tedious to write</li><li class="fragment">Limited REST specific tool chain</li></ul></section><section><h2>Comparison</h2><table><thead><tr><th></th><th>RAML</th><th>API Blueprint</th><th>Swagger</th></tr></thead><tbody><tr class="fragment highlight-current-blue"><th>Format</th><td>yaml</td><td>markdown</td><td>json/yaml</td></tr><tr class="fragment highlight-current-blue"><th>Github (repos)</th><td>587</td><td>293</td><td>2209</td></tr><tr class="fragment highlight-current-blue"><td><b>Stackoverflow</b></td><td>330</td><td>770</td><td>3802</td></tr></tbody></table></section><section><h3>Back to swagger</h3><p><i class="fa fa-arrow-right fa-3x"></i></p></section></section><section><h2>License</h2><p class="fragment">Apache 2.0</p></section><section tagcloud large><h2>Support for</h2><p class="fragment">CLOJURE
 D
 Erlang
@@ -43,7 +58,7 @@ license:
   name: Apache 2.0
   url: http://www.apache.org/licenses/LICENSE-2.0.html
 version: 1.0.1
-</code></pre><p><i>(See info.yaml in samples)</i></p></section><section><h2>Paths</h2><pre><code class="yaml">paths:
+</code></pre><p data-code-focus="2-3" class="fragment current-only">Description</p><p data-code-focus="5-8" class="fragment current-only">Contact information</p><p data-code-focus="9-11" class="fragment current-only">License</p><p data-code-focus="12" class="fragment current-only">API version</p><p class="fragment"><i>(See info.yaml in samples)</i></p></section><section><h2>Paths</h2><pre><code class="yaml">paths:
   /hello/{user}:
     get:
       description: Returns a greeting to the user!
@@ -60,7 +75,7 @@ version: 1.0.1
             type: string
         400:
           description: Invalid characters in "user" were provided.
-</code></pre><p><i>(See paths.yaml in samples)</i></p></section><section><h2>Definitions</h2><pre><code class="yaml">definitions:
+</code></pre><p data-code-focus="2" class="fragment current-only">Path</p><p data-code-focus="3" class="fragment current-only">Method</p><p data-code-focus="5-10" class="fragment current-only">Parameters</p><p data-code-focus="11-17" class="fragment current-only">Responses</p><p class="fragment"><i>(See paths.yaml in samples)</i></p></section><section><h2>Definitions</h2><pre><code class="yaml">definitions:
   User:
     type: object
     required:
@@ -90,7 +105,7 @@ version: 1.0.1
             - CREATE
             - DELETE
         example: ['READ', 'CREATE']
-</code></pre><p><i>(See definitions.yaml in samples)</i></p></section><section><h2>Definitions in Paths</h2><pre><code class="yaml">paths:
+</code></pre><p data-code-focus="2" class="fragment current-only">Name</p><p data-code-focus="4-6" class="fragment current-only">Required properties</p><p data-code-focus="7-30" class="fragment current-only">Properties ...</p><p data-code-focus="8-10" class="fragment current-only">Integers</p><p data-code-focus="11-17" class="fragment current-only">Strings</p><p data-code-focus="18-20" class="fragment current-only">Dates</p><p data-code-focus="21-30" class="fragment current-only">Complex structures</p><p class="fragment"><i>(See definitions.yaml in samples)</i></p></section><section><h2>Definitions in Paths</h2><pre><code class="yaml">paths:
   /users/:
     get:
       description: Returns a list of users
@@ -101,7 +116,7 @@ version: 1.0.1
             type: array
             items:
               $ref: '#/definitions/User'
-</code></pre><p><i>(See definitions_paths.yaml in samples)</i></p></section><section><h2>Full example</h2><pre><code class="yaml">swagger: '2.0'
+</code></pre><p data-code-focus="8-11" class="fragment current-only">Array of users</p><p class="fragment"><i>(See definitions_paths.yaml in samples)</i></p></section><section><h2>Full example</h2><pre><code class="yaml">swagger: '2.0'
 info:
   title: Sample API
   description: Sample api representing an user resource
